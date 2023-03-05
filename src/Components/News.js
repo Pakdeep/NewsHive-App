@@ -24,8 +24,11 @@ export class News extends Component {
     };
   }
   async componentDidMount() {
-    // https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=e02bea875d1541a1baabc6778cd557fe   category=${this.state.find}
-    let url = `https://newsapi.org/v2/top-headlines?&country=${this.props.country}&category=${this.props.category}&apiKey=e02bea875d1541a1baabc6778cd557fe&page=1&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?&country=${
+      this.props.country
+    }&category=${this.props.category}&apiKey=${(process.env.REACT_APP_API_KEY)}&page=1&pageSize=${
+      this.props.pageSize
+    }`;
     this.setState({ loading: true });
     let data = await fetch(url);
     let jsonparsedData = await data.json();
@@ -40,7 +43,7 @@ export class News extends Component {
       this.props.country
     }&category=${
       this.props.category
-    }&apiKey=e02bea875d1541a1baabc6778cd557fe&page= ${
+    }&apiKey=${(process.env.REACT_APP_API_KEY)}&page= ${
       this.state.page - 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -57,12 +60,12 @@ export class News extends Component {
       this.props.country
     }&category=${
       this.props.category
-    }&apiKey=e02bea875d1541a1baabc6778cd557fe&page= ${
+    }&apiKey=${(process.env.REACT_APP_API_KEY)}&page= ${
       this.state.page + 1
     }&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(url);
-    let jsonparsedData = await data.json(); 
+    let jsonparsedData = await data.json();
     this.setState({
       articles: jsonparsedData.articles,
       page: this.state.page + 1,
@@ -72,13 +75,14 @@ export class News extends Component {
 
   render() {
     const capitalizeWords = (str) => {
-      return(str.charAt(0).toUpperCase() + str.slice(1))
-        
+      return str.charAt(0).toUpperCase() + str.slice(1);
     };
     return (
       <div className="container my-3">
         <h1 className="text-center">Top-Headlines</h1>
-        <h1 className="text-center text-primary">{capitalizeWords(this.props.category)}</h1>
+        <h1 className="text-center text-primary">
+          {capitalizeWords(this.props.category)}
+        </h1>
         <div className="row">
           {!this.state.loading &&
             this.state.articles.map((article, index) => {
@@ -88,7 +92,7 @@ export class News extends Component {
                     title={article.title}
                     description={article.description}
                     author={article.author}
-                    source={article.source.name}                    
+                    source={article.source.name}
                     date={article.publishedAt}
                     imageUrl={
                       article.urlToImage !== null
@@ -107,7 +111,10 @@ export class News extends Component {
           </div>
         )}
 
-        <div className="nextprev" style={{ display: "flex", justifyContent: "center", gap: "15px" }}>
+        <div
+          className="nextprev"
+          style={{ display: "flex", justifyContent: "center", gap: "15px" }}
+        >
           <button
             disabled={this.state.page <= 1}
             type="button"
@@ -129,13 +136,13 @@ export class News extends Component {
     );
   }
 }
-  // News.defaultProps = {
-  //   country: "in",
-  //   pageSize: 9,
-  //   category: "entertainment",
-  // };
-  // News.propTypes = {
-  //   country: PropTypes.string,
-  //   pageSize: PropTypes.number,
-  // };
+// News.defaultProps = {
+//   country: "in",
+//   pageSize: 9,
+//   category: "entertainment",
+// };
+// News.propTypes = {
+//   country: PropTypes.string,
+//   pageSize: PropTypes.number,
+// };
 export default News;
