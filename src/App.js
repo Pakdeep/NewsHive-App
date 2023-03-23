@@ -1,22 +1,20 @@
-import React, { Component } from "react";
 import Navbar from "./Components/Navbar";
 import News from "./Components/News";
 import "./Components/style.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-export default class App extends Component {
+const App=()=> {
   // constructor(props){
     //   super(props);
     //   this.state = {
   //     pageSize:9,
   //   }
   // }
-  render() {
-    console.log(process.env.REACT_APP_API_KEY)
+  // render() {
     return (
       <div>
         <Router>
-          <Navbar />
+          <Navbar />      
           <Routes>
             <Route exact path="/" element={<News key="general" category="general" />} />
             <Route
@@ -51,4 +49,5 @@ export default class App extends Component {
       </div>
     );
   }
-}
+
+  export default App;

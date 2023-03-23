@@ -1,17 +1,16 @@
-import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export default class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      year: new Date().getFullYear()
-    };
-  }
-  render() {
+const Navbar=()=> {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     year: 
+  //   };
+  // }
+  // render() {   
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               News-Hive
@@ -96,12 +95,19 @@ export default class Navbar extends Component {
                     </li>
                   </ul>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link active" aria-current="page" to="/">
+                    Country <span className="text-primary">IN</span>
+                  </Link>
+                </li>
               </ul>
             </div>
-            <h4 className="text-light"> &copy;DeepJais{this.state.year}</h4>
+            <h4 className="text-light"> &copy;DeepJais<sapn className="text-primary">{new Date().getFullYear()}</sapn></h4>
           </div>
         </nav>
       </div>
     );
-  }
+  // }
 }
+
+export default Navbar;

@@ -1,11 +1,29 @@
-#navbarSupportedContent ul .dropdown-menu li a.dropdown-item{
-    color:white;
+#navbarSupportedContent ul .dropdown-menu li a.dropdown-item {
+    color: white;
 }
 
 
-.card .card-body a.readMore:hover,.container-fluid .navbar-nav .nav-item .nav-link:hover, 
-#navbarSupportedContent ul .dropdown-menu li a.dropdown-item:hover,.container .nextprev .next-prev:hover{
+.card .card-body a.readMore:hover,
+.container-fluid .navbar-nav .nav-item .nav-link:hover,
+#navbarSupportedContent ul .dropdown-menu li a.dropdown-item:hover,
+.container .nextprev .next-prev:hover {
     background-color: rgb(100, 100, 214);
-    color:      rgb(163, 197, 39);
-    
+    color: rgb(163, 197, 39);
+
+}
+
+.card .card-body {
+    position: relative;
+}
+
+.card .card-body .source {
+    border-radius: 20px;
+    width: 200px;
+    text-align: center;
+    background-color: rgb(197, 52, 52);
+    color: white;
+    position: absolute;
+    top: -260px;
+    z-index: 5;
+    right: -5px;
 }
